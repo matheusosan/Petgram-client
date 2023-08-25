@@ -21,11 +21,11 @@ export default function Home() {
             />
             <div className="flex flex-col pl-1 py-3 gap-2">
               <button>
-                <I.BsFillHeartFill />
+                <I.BsFillHeartFill className="text-white" />
               </button>
-              <p className="font-bold text-sm">matheusosan</p>
-              <h2 className="text-sm">{post.description}</h2>
-              <p className="text-xs">Há 2 dias</p>
+              <p className="font-bold text-sm text-white">matheusosan</p>
+              <h2 className="text-sm text-white">{post.description}</h2>
+              <p className="text-xs text-gray-400">Há 2 dias</p>
             </div>
           </div>
         ))}
