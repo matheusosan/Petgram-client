@@ -2,8 +2,10 @@
 
 import React from "react";
 import useHandleInput from "@/hooks/useHandleInput";
-import * as I from "react-icons/bs";
+import * as Ibs from "react-icons/bs";
+import * as Iai from "react-icons/ai";
 import { useModalStore } from "@/app/state/modal-state";
+import Image from "next/image";
 
 function CreatePost() {
   const {
@@ -11,6 +13,7 @@ function CreatePost() {
     selectedFile,
     handleDescriptionChange,
     handleFileChange,
+    cleanFile,
     handleSubmit,
   } = useHandleInput();
 
@@ -18,63 +21,77 @@ function CreatePost() {
 
   return (
     <div className="flex flex-col w-full h-full items-center z-50">
-      <div className="relative top-0 flex flex-col items-start justify-center w-full px-6 py-4">
+      <div className="flex flex-col items-start justify-center w-full h-[8vh] px-6 py-4 ">
         <button className="text-white text-2xl" onClick={() => closeModal()}>
-          X
+          <Iai.AiOutlineClose />
         </button>
-      </div>
-      <div className="flex items-center w-full px-12">
-        <img
-          className="h-8 w-8 rounded-full"
-          src="https://media.licdn.com/dms/image/D4D03AQEf783BDuouxg/profile-displayphoto-shrink_800_800/0/1671417760869?e=1698883200&v=beta&t=B0Sk36YmlVlqxq3uuX0qk9gEGYwM_ODBPKwAtOZo35w"
-          alt=""
-        />
-        <h2 className="text-white ml-2">matheusosan</h2>
       </div>
 
       <form
-        className="flex flex-col items-center w-full overflow-y-auto"
+        id="post-form"
+        className="flex h-full flex-col items-center   w-full overflow-y-auto pb-6"
         onSubmit={handleSubmit}
         method="post"
         encType="multipart/form-data"
       >
+        <div className="flex items-center w-full px-12">
+          <Image
+            width={480}
+            height={920}
+            className="h-8 w-8 rounded-full"
+            src=""
+            alt=""
+          />
+          <h2 className="text-white ml-2">matheusosan</h2>
+        </div>
+
         <textarea
-          className="break-words w-full h-auto bg-inherit text-xs px-12 py-4 text-white text-left  placeholder:text-white focus:outline-none resize-y"
+          className="break-words w-full h-auto bg-inherit text-xs px-12 py-4 mb-6 text-white text-left  placeholder:text-white focus:outline-none resize-none"
           value={description}
           placeholder="Digite a descrição da postagem"
           onChange={handleDescriptionChange}
         />
-        <div className="flex-1 w-[90%] flex items-center justify-center border-2 border-gray-200">
-          {selectedFile && (
-            <img
+
+        <input
+          className="hidden"
+          id="file-input"
+          name="file"
+          type="file"
+          onChange={handleFileChange}
+        />
+
+        {selectedFile && (
+          <div className="relative border-[1px] border-gray-200 w-[80%] h-auto">
+            <Image
+              width={480}
+              height={920}
               src={selectedFile && URL.createObjectURL(selectedFile)}
-              className="w-full aspect-auto"
+              className="w-full bg-fit aspect-auto"
               alt=""
             />
-          )}
+            <Iai.AiOutlineClose
+              className="absolute top-0 right-0 p-2 text-white cursor:pointer
+              "
+              size={32}
+              onClick={() => cleanFile()}
+            />
+          </div>
+        )}
 
-          {!selectedFile && (
-            <h2 className="text-white text-center py-16">Paste a file here!</h2>
-          )}
-        </div>
-
-        <div className="absolute flex justify-between items-center w-full bottom-0 px-10 py-2 border-t-2 border-gray-200">
-          <input
-            className="hidden"
-            id="file-input"
-            name="file"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-          <label htmlFor="file-input" className="text-white">
-            <I.BsFillImageFill size={24} />
-          </label>
-          <button type="submit" className="text-white">
-            Publicar
-          </button>
-        </div>
+        {!selectedFile && (
+          <div className="relative flex items-center justify-center border-[1px] border-gray-200 w-[80%] h-[300px]">
+            <label htmlFor="file-input" className="text-white">
+              <Ibs.BsFillImageFill size={64} color="white" />
+            </label>
+          </div>
+        )}
       </form>
+
+      <div className="flex justify-center items-center w-full h-[7vh] bottom-0 px-10 py-6 border-t-2 border-gray-200">
+        <button type="submit" form="post-form" className="text-white">
+          Publicar
+        </button>
+      </div>
     </div>
   );
 }
