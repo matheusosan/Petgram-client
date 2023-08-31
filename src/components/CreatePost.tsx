@@ -29,7 +29,7 @@ function CreatePost() {
 
       <form
         id="post-form"
-        className="flex h-full flex-col items-center   w-full overflow-y-auto pb-6"
+        className="flex h-full flex-col items-center   w-full overflow-y-auto py-6"
         onSubmit={handleSubmit}
         method="post"
         encType="multipart/form-data"
@@ -87,7 +87,7 @@ function CreatePost() {
         )}
       </form>
 
-      <div className="flex justify-center items-center w-full h-[7vh] bottom-0 px-10 py-6 border-t-2 border-gray-200">
+      <div className="flex justify-center items-center w-full h-[7vh] bottom-0 px-10 py-6 border-t-[1px] border-gray-200">
         <button type="submit" form="post-form" className="text-white">
           Publicar
         </button>
