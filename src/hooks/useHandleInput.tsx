@@ -2,9 +2,9 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const useHandleInput = () => {
   const [description, setDescription] = useState<string>("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
 
-  const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(event.target.value);
   };
 
