@@ -14,6 +14,10 @@ const useHandleInput = () => {
     }
   };
 
+  const cleanFile = () => {
+    setSelectedFile(undefined);
+  };
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -47,6 +51,7 @@ const useHandleInput = () => {
     selectedFile,
     handleDescriptionChange,
     handleFileChange,
+    cleanFile,
     handleSubmit,
   };
 };
