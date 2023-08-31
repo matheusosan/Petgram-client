@@ -12,13 +12,15 @@ const Posts = () => {
             <I.BsFillPersonFill className="text-white h-[25px] w-[25px]" />
             <p className="text-white text-sm">matheusosan</p>
           </div>
-          <Image
-            width={480}
-            height={920}
-            src={post.imageUrl}
-            alt={post.description}
-            className="h-[60vh] w-full bg-fit bg-center"
-          />
+          <div className="h-auto w-full">
+            <Image
+              width={480}
+              height={920}
+              src={post.imageUrl}
+              alt={post.description}
+              className="w-full aspect-auto bg-center"
+            />
+          </div>
           <div className="flex flex-col pl-1 py-3 gap-2">
             <button>
               <I.BsFillHeartFill className="text-white" />
