@@ -7,8 +7,8 @@ const Posts = () => {
   return (
     <main className="flex h-full flex-col items-center justify-center">
       {mockData.map((post) => (
-        <div key={post.id} className="pb-6">
-          <div className="flex items-center gap-2 bg-[#121212] py-2 pl-1">
+        <div key={post.id} className="w-full pb-6">
+          <div className="flex items-center bg-[#121212] py-2 pl-1">
             <I.BsFillPersonFill className="text-white h-[25px] w-[25px]" />
             <p className="text-white text-sm">matheusosan</p>
           </div>
@@ -17,7 +17,7 @@ const Posts = () => {
             height={920}
             src={post.imageUrl}
             alt={post.description}
-            className=" w-full aspect-square bg-cover bg-center"
+            className="w-full aspect-square bg-cover bg-center"
           />
           <div className="flex flex-col pl-1 py-3 gap-2">
             <button>
