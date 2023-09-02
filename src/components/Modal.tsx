@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { useModalStore } from "@/app/state/modal-state";
+import { useModal } from "@/hooks/useModal";
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
-  const { isModalOpen } = useModalStore();
+  const { isModalOpen } = useModal();
 
   return (
     <>
