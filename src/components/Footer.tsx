@@ -2,7 +2,7 @@
 
 import React from "react";
 import * as I from "react-icons/bs";
-import { useModalStore } from "@/app/state/modal-state";
+import { useModalStore } from "@/state/modal-state";
 
 const Footer = () => {
   const { openModal } = useModalStore();

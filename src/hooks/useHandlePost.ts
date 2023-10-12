@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-const useHandleInput = () => {
+export const useHandlePost = () => {
   const [description, setDescription] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
 
@@ -55,5 +55,3 @@ const useHandleInput = () => {
     handleSubmit,
   };
 };
-
-export default useHandleInput;

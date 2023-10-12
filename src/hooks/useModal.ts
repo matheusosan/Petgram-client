@@ -1,4 +1,4 @@
-import { useModalStore } from "@/app/state/modal-state";
+import { useModalStore } from "@/state/modal-state";
 import { useEffect } from "react";
 
 export const useModal = () => {

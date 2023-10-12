@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import useHandleInput from "@/hooks/useHandleInput";
+import { useHandlePost } from "@/hooks/useHandlePost";
 import * as Ibs from "react-icons/bs";
 import * as Iai from "react-icons/ai";
-import { useModalStore } from "@/app/state/modal-state";
+import { useModalStore } from "@/state/modal-state";
 import Image from "next/image";
 
 function CreatePost() {
@@ -15,7 +15,7 @@ function CreatePost() {
     handleFileChange,
     cleanFile,
     handleSubmit,
-  } = useHandleInput();
+  } = useHandlePost();
 
   const { closeModal } = useModalStore();
 
@@ -79,9 +79,9 @@ function CreatePost() {
         )}
 
         {!selectedFile && (
-          <div className="relative flex items-center justify-center border-[1px] border-gray-200 w-[80%] h-[300px]">
+          <div className="relative flex items-center justify-center border-[1px] rounded-md border-gray-200 w-[80%] h-[300px]">
             <label htmlFor="file-input" className="text-white">
-              <Ibs.BsFillImageFill size={64} color="white" />
+              <Ibs.BsFillImageFill size={64} className="text-white/75" />
             </label>
           </div>
         )}
