@@ -10,7 +10,7 @@ export const useHandleSignup = () => {
       };
 
       const response = await fetch(
-        "http://localhost:3000/user/create",
+        "https://petgram-server.onrender.com/user/create",
         requestOptions
       );
 
