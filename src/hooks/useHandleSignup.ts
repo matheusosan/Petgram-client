@@ -1,6 +1,10 @@
 import { SignUp } from "@/schemas/Signup.schema";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export const useHandleSignup = () => {
+  const router = useRouter();
+
   const onSubmit = async (data: SignUp) => {
     try {
       const requestOptions = {
@@ -10,11 +14,16 @@ export const useHandleSignup = () => {
       };
 
       const response = await fetch(
-        "https://petgram-server.onrender.com/user/create",
+        "http://localhost:3000/user/create",
         requestOptions
       );
 
-      await response.json();
+      if (response.ok) {
+        toast("Cadastro realizado!", {
+          theme: "dark",
+        });
+        router.push("/login");
+      }
     } catch (error) {
       console.log(`Ocorreu um erro: ${error}`);
     }
