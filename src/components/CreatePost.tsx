@@ -40,7 +40,7 @@ function CreatePost() {
             height={920}
             className="h-8 w-8 rounded-full"
             src=""
-            alt=""
+            alt="Imagem de perfil do usuário"
           />
           <h2 className="text-white ml-2">matheusosan</h2>
         </div>
@@ -80,8 +80,8 @@ function CreatePost() {
 
         {!selectedFile && (
           <div className="relative flex items-center justify-center border-[1px] rounded-md border-gray-200 w-[80%] h-[300px]">
-            <label htmlFor="file-input" className="text-white">
-              <Ibs.BsFillImageFill size={64} className="text-white/75" />
+            <label htmlFor="file-input" className="text-white cursor:pointer">
+              <Ibs.BsFillImageFill size={64} className="text-white/75 " />
             </label>
           </div>
         )}
