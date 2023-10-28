@@ -1,6 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { toast } from "react-toastify";
+import { useModalStore } from "@/state/modal-state";
 
 export const useHandlePost = () => {
+  const { closeModal } = useModalStore();
   const [description, setDescription] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
 
@@ -31,13 +34,16 @@ export const useHandlePost = () => {
     formData.append("description", description);
 
     try {
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch("http://localhost:3000/post", {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        console.log("Post created");
+        closeModal();
+        toast("Post criado!");
+        setDescription("");
+        cleanFile();
       } else {
         console.error("Error creating post");
       }
