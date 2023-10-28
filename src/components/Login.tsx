@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Link from "next/link";
 import { useHandleLogin } from "@/hooks/useHandleLogin";
 
 const LoginSchema = z.object({
@@ -60,6 +61,13 @@ const LoginForm = () => {
       >
         LOGIN
       </button>
+
+      <p className="text-sm text-[#71767b] ">
+        Não tem uma conta?{" "}
+        <Link href="/signup" className="font-bold text-[#1d9bf0]">
+          Inscreva-se
+        </Link>
+      </p>
     </div>
   );
 };
