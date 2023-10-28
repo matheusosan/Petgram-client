@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUp, SignUpSchema } from "@/schemas/Signup.schema";
 import { useHandleSignup } from "@/hooks/useHandleSignup";
+import Link from "next/link";
 
 const SignupForm = () => {
   const {
@@ -62,6 +63,13 @@ const SignupForm = () => {
       >
         CADASTRAR
       </button>
+
+      <p className="text-sm text-[#71767b] ">
+        Já possui uma conta?{" "}
+        <Link href="/login" className="font-bold text-[#1d9bf0]">
+          Entrar
+        </Link>
+      </p>
     </div>
   );
 };
