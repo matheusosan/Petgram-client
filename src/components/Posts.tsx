@@ -1,23 +1,28 @@
 import React from "react";
-import { mockData } from "@/mock/post";
 import Image from "next/image";
 import * as I from "react-icons/bs";
+import { ApiData } from "@/types/api.type";
 
-const Posts = () => {
+const Posts = async () => {
+  const response = await fetch("http://localhost:3000/post");
+  const data = await response.json();
+
   return (
-    <main className="flex h-full flex-col items-center justify-center">
-      {mockData.map((post) => (
-        <div key={post.id} className="w-full pb-6">
+    <main className="flex h-full flex-col items-center justify-center md:my-6">
+      {data.map((post: ApiData) => (
+        <div key={post.id} className="w-full md:w-2/4 pb-6 flex flex-col">
           <div className="flex items-center bg-[#121212] py-2 pl-1">
             <I.BsFillPersonFill className="text-white h-[25px] w-[25px]" />
-            <p className="text-white text-sm">matheusosan</p>
+            <p className="text-white text-sm ml-2">matheusosan</p>
           </div>
           <Image
-            width={480}
-            height={920}
-            src={post.imageUrl}
+            width={1920}
+            height={1080}
+            src={post.photoUrl}
             alt={post.description}
-            className="w-full aspect-square bg-cover bg-center"
+            quality={100}
+            className="aspect-video md:aspect-video object-fill bg-center"
+            priority={true}
           />
           <div className="flex flex-col pl-1 py-3 gap-2">
             <button>
