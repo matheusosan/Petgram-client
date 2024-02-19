@@ -14,6 +14,9 @@ const config: Config = {
         "pet-text": "#333333",
         "pet-contrast": "#E84A5F",
       },
+      backgroundImage: {
+        "login-bg": "url('/public/loginbg.jpg')",
+      },
     },
   },
   plugins: [],

@@ -1,19 +1,25 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Modal from "@/components/Modal";
-import CreatePost from "@/components/CreatePost";
-import Posts from "@/components/Posts";
+import { Suspense } from "react";
 
-export default function Home() {
+import Navigation from "@/components/Navigation";
+import Posts from "@/components/Posts";
+import CreatePost from "@/components/CreatePost";
+import Skeleton from "@/components/@skeletons";
+import Footer from "@/components/Footer";
+
+export default async function Home() {
   return (
-    <>
-      <Header />
-      <Posts />
+    <main className="flex flex-col w-full lg:flex-row">
+      <Suspense fallback={<Skeleton.Header />}>
+        <Navigation />
+      </Suspense>
+
+      <Suspense fallback={<Skeleton.HomePosts arrayLength={2} />}>
+        <Posts />
+      </Suspense>
+
       <Footer />
 
-      <Modal>
-        <CreatePost />
-      </Modal>
-    </>
+      <CreatePost />
+    </main>
   );
 }

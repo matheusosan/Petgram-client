@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#121212];
+  @apply bg-[#000000];
+}
+
+.skeleton {
+  @apply animate-pulse rounded-xl bg-zinc-300;
 }
 
 ::-webkit-scrollbar {
