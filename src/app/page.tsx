@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 
-import Navigation from "@/components/Navigation";
-import Posts from "@/components/Posts";
-import CreatePost from "@/components/CreatePost";
+import Navigation from "@/components/@pages/home/Navigation";
+import Posts from "@/components/@pages/home/Posts";
+import CreatePost from "@/components/@pages/home/CreatePost";
 import Skeleton from "@/components/@skeletons";
-import Footer from "@/components/Footer";
+import Footer from "@/components/@pages/home/Footer";
 
 export default async function Home() {
   return (

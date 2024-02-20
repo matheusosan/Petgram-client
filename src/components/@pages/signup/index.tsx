@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useSignup } from "@/hooks/UseSignup";
+import { useSignup } from "./hooks/UseSignup";
 
 const SignupForm = () => {
   const { errors, onSignup, handleSubmit, register } = useSignup();

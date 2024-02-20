@@ -1,17 +1,11 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "@/hooks/useAuth";
+import { useLogin } from "./hooks/useLogin";
 
 const LoginForm = () => {
-  const {
-    onLogin,
-    register,
-    handleSubmit,
-    errors,
-    isSubmitSuccessful,
-    isSubmitting,
-  } = useAuth();
+  const { onLogin, register, handleSubmit, errors, isSubmitting } = useLogin();
 
   return (
     <div className="flex items-center justify-center w-full h-screen gap-12 ">

@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Metadata } from "next";
-import Header from "@/components/Navigation";
-import ProfileContent from "@/components/Profile";
+import Header from "@/components/@pages/home/Navigation";
+import ProfileContent from "@/components/@pages/profile";
 import Skeleton from "@/components/@skeletons";
 import { getAuthenticatedUser, getUserPosts } from "@/actions";
 import { IProfile } from "@/@types";

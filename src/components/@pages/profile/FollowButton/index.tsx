@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import useFollow from "@/hooks/useFollow";
+import useFollow from "./hooks/useFollow";
 
 interface Props {
   profileUserId: number;

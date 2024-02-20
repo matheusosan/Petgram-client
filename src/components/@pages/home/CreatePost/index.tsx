@@ -2,8 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import profile from "../../../public/profile.png";
-import { useCreatePost } from "@/hooks/useHandlePosts";
+import profile from "@/public/profile.png";
+import { useCreatePost } from "./hooks/useCreatePost";
 import { useModalStore } from "@/state/modal-state";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDropzone } from "react-dropzone";

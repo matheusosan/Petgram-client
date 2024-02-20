@@ -4,7 +4,7 @@ import { getUserPosts } from "@/actions";
 import { decode_token } from "@/utils/decodeToken";
 import { FiTrash } from "react-icons/fi";
 
-import DeletePostButton from "../DeletePostButton";
+import DeletePostButton from "./DeletePostButton";
 
 const ProfilePosts = async ({ id }: { id: string }) => {
   const user = await getUserPosts(id);

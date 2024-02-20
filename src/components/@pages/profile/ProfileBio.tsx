@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import FollowButton from "../FollowButton";
-import profile from "../../../public/profile.png";
+import FollowButton from "./FollowButton";
+import profile from "@/public/profile.png";
 import { getAuthenticatedUser, getUserPosts } from "@/actions";
 
 const ProfileBio = async ({ id }: { id: string }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import LogoutButton from "../LogoutButton";
-import SearchInput from "../SearchInput";
+import LogoutButton from "./LogoutButton";
+import SearchInput from "./SearchInput";
 import { getAuthenticatedUser } from "@/actions";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";

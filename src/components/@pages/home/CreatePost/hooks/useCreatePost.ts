@@ -1,11 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useModalStore } from "@/state/modal-state";
-import { useRouter } from "next/navigation";
 
 export const useCreatePost = () => {
   const { isModalOpen, closeModal } = useModalStore();
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
@@ -66,27 +64,6 @@ export const useCreatePost = () => {
     }
   };
 
-  const deletePost = async (id: string) => {
-    try {
-      const response = await fetch(`http://localhost:3000/post/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
-
-      if (response.ok) {
-        toast.success("Post Excluído!", {
-          theme: "dark",
-        });
-        router.refresh();
-        return;
-      }
-    } catch (e) {
-      toast.error(`Ocorreu um erro: ${e}.`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -103,7 +80,6 @@ export const useCreatePost = () => {
     handleFileChange,
     cleanFile,
     handleSubmitPost,
-    deletePost,
     onDrop,
   };
 };

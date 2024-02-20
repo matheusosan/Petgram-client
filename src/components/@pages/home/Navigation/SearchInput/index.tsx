@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import Skeleton from "../@skeletons";
-import useSearchInput from "@/hooks/useSearchInput";
+import Skeleton from "../../../../@skeletons";
+import useSearchInput from "./hooks/useSearchInput";
 import { FaSearch } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 

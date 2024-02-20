@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useLogout } from "./hooks/useLogout";
 import { MdOutlineLogout } from "react-icons/md";
 
 const LogoutButton = () => {
-  const { onLogout } = useAuth();
+  const { onLogout } = useLogout();
 
   return (
     <button className="flex lg:gap-2 text-white" onClick={() => onLogout()}>

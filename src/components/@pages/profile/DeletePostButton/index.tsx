@@ -1,15 +1,14 @@
 "use client";
 import React from "react";
-import { useCreatePost } from "@/hooks/useHandlePosts";
+import { useDeletePost } from "./hooks/useDeletePost";
 
-const DeletePostButton = ({
-  id,
-  children,
-}: {
+interface Props {
   id: string;
   children: React.ReactNode;
-}) => {
-  const { deletePost } = useCreatePost();
+}
+
+const DeletePostButton = ({ id, children }: Props) => {
+  const { deletePost } = useDeletePost();
 
   return (
     <button

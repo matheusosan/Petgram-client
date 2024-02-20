@@ -2,15 +2,27 @@
 
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { LoginSchema, LoginType } from "@/validations/login.schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+export const LoginSchema = z.object({
+  email: z
+    .string()
+    .email("O contéudo deve ser um endereço de email válido.")
+    .nonempty("O campo email é obrigatório."),
+  password: z
+    .string()
+    .min(3, "O campo senha deve conter no mínimo 3 caracteres"),
+});
+
+export type LoginType = z.infer<typeof LoginSchema>;
 
 interface ErrorResponse {
   message: string;
 }
 
-export const useAuth = () => {
+export const useLogin = () => {
   const router = useRouter();
 
   const {
@@ -44,26 +56,8 @@ export const useAuth = () => {
     }
   };
 
-  const onLogout = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/auth/logout", {
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-
-        cache: "no-store",
-      });
-
-      if (response.ok) {
-        router.push("/login");
-      }
-    } catch (error) {
-      toast(`Ocorreu um erro: ${error}`);
-    }
-  };
-
   return {
     onLogin,
-    onLogout,
     errors,
     isSubmitting,
     isSubmitSuccessful,
