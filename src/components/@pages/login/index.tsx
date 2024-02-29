@@ -3,14 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import { useLogin } from "./hooks/useLogin";
+import { AiOutlineLoading3Quarters as LoadSpinner } from "react-icons/ai";
 
 const LoginForm = () => {
   const { onLogin, register, handleSubmit, errors, isSubmitting } = useLogin();
 
   return (
-    <div className="flex items-center justify-center w-full h-screen gap-12 ">
-      <div className="flex flex-col items-center justify-between h-[500px] w-[350px] rounded-lg py-12 border border-pet-contrast">
-        <h2 className="text-pet-contrast text-2xl font-bold">Realizar Login</h2>
+    <div className="flex h-screen w-full items-center justify-center gap-12 bg-[#fff] ">
+      <div className="flex h-[500px] w-[350px] flex-col items-center justify-between rounded-lg border border-slate-300 bg-[#fff] py-12">
+        <h2 className="text-2xl font-bold text-pet-contrast">Realizar Login</h2>
         <form
           id="signup"
           action=""
@@ -21,30 +22,42 @@ const LoginForm = () => {
             type="text"
             placeholder="Email"
             autoComplete="off"
-            className="rounded-lg text-sm text-white pl-4 py-2 border border-pet-contrast bg-[#09090B]"
+            className="rounded-lg border border-gray-400 py-2 pl-4 text-sm outline-pet-contrast"
             {...register("email")}
           />
-          {errors.email && (
-            <p className="text-xs text-red-500">{errors.email.message}</p>
-          )}
 
           <input
             type="password"
             autoComplete="off"
             placeholder="Senha"
-            className="rounded-lg text-sm text-white pl-4 py-2 border border-pet-contrast  bg-[#09090B]"
+            className="rounded-lg border border-gray-400 py-2 pl-4 text-sm outline-pet-contrast "
             {...register("password")}
           />
-          {errors.password && (
-            <p className=" text-xs text-red-500">{errors.password.message}</p>
-          )}
         </form>
+        {errors && (
+          <div className="flex flex-col gap-2 px-9 font-semibold">
+            {errors.email && (
+              <p className=" text-xs text-pet-contrast">
+                {errors.email.message}
+              </p>
+            )}
+            {errors.password && (
+              <p className=" text-xs text-pet-contrast">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+        )}
         <button
           form="signup"
           type="submit"
-          className="bg-pet-contrast w-[80%] py-2 rounded-lg text-white"
+          className="flex w-[80%] items-center justify-center rounded-lg bg-pet-contrast py-2 text-white"
         >
-          {isSubmitting ? "Entrando" : "Entrar"}
+          {isSubmitting ? (
+            <LoadSpinner className="h-4 w-4 animate-spin" />
+          ) : (
+            "Entrar"
+          )}
         </button>
 
         <p className="text-sm text-[#71767b] ">
