@@ -5,7 +5,10 @@ import Image from "next/image";
 import profile from "@/public/profile.png";
 import { useCreatePost } from "./hooks/useCreatePost";
 import { useModalStore } from "@/state/modal-state";
-import { AiOutlineClose } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineLoading3Quarters as LoadSpinner,
+} from "react-icons/ai";
 import { useDropzone } from "react-dropzone";
 
 function CreatePost() {
@@ -110,8 +113,17 @@ function CreatePost() {
           </form>
 
           <div className="flex justify-center items-center w-full h-[7vh] bottom-0 px-10 py-6 border-t-[1px] border-gray-200">
-            <button type="submit" form="post-form" className="text-white">
-              {loading ? "Enviando..." : "Enviar"}
+            <button
+              disabled={!selectedFile}
+              type="submit"
+              form="post-form"
+              className="text-white disabled:cursor-not-allowed"
+            >
+              {loading ? (
+                <LoadSpinner className="animate-spin h-6 w-6" />
+              ) : (
+                "Enviar"
+              )}
             </button>
           </div>
         </div>
