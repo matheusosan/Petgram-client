@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useModalStore } from "@/state/modal-state";
+import ROUTES from "@/services/routes";
 
 export const useCreatePost = () => {
   const { isModalOpen, closeModal } = useModalStore();
@@ -44,7 +45,7 @@ export const useCreatePost = () => {
     formData.append("description", description);
 
     try {
-      const response = await fetch("http://localhost:3000/post", {
+      const response = await fetch(ROUTES.POSTS.CREATE_POST, {
         method: "POST",
         body: formData,
         credentials: "include",

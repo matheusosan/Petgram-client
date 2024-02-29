@@ -2,13 +2,14 @@
 
 import { IPosts, IProfile, IAuthenticatedUser, IFollowers } from "@/@types";
 import { getJwt } from "@/utils/getJwt";
+import ROUTES from "@/services/routes";
 
 export const getPosts = async () => {
   const { token } = await getJwt();
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const res = await fetch("http://localhost:3000/post", {
+  const res = await fetch(ROUTES.POSTS.GET_HOME_POSTS, {
     cache: "no-store",
     credentials: "include",
     headers: {
@@ -26,7 +27,7 @@ export const getUserPosts = async (id: string) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   try {
-    const res = await fetch(`http://localhost:3000/user/posts/${id}`, {
+    const res = await fetch(ROUTES.POSTS.GET_USER_POSTS(id), {
       cache: "no-store",
       credentials: "include",
 
@@ -47,7 +48,7 @@ export const getAuthenticatedUser = async () => {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const response = await fetch("http://localhost:3000/user/authenticated", {
+  const response = await fetch(ROUTES.USER.AUTHENTICATED, {
     credentials: "include",
     cache: "no-store",
     headers: {
@@ -66,7 +67,7 @@ export const getUserFollowers = async (id: string) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   try {
-    const res = await fetch(`http://localhost:3000/followers/${id}`, {
+    const res = await fetch(ROUTES.USER.FOLLOWERS(id), {
       cache: "no-store",
       credentials: "include",
 

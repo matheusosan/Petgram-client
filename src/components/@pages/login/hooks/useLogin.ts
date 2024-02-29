@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import ROUTES from "@/services/routes";
 
 export const LoginSchema = z.object({
   email: z
@@ -34,8 +35,10 @@ export const useLogin = () => {
   });
 
   const onLogin = async (data: LoginType) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch(ROUTES.AUTH.LOGIN, {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
